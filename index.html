@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/boardhack.css" />
+  <link rel="stylesheet" href="css/boardhack.css?v=20261004hub" />
 </head>
 <body>
   <header class="topbar">
@@ -30,102 +30,99 @@
   </header>
 
   <main class="main hub-main">
-    <section class="hero">
-      <h1 id="heroTitle">Рады видеть вас за столом.</h1>
-      <p id="heroDesc">Выберите стол и сделайте первый ход.</p>
+    <section class="hub-hero">
+      <div class="hub-hero-copy">
+        <p class="hub-kicker" id="heroKicker">шахматная лаборатория</p>
+        <h1 id="heroTitle">Взломай доску. <span class="accent">Выбери режим.</span></h1>
+        <p class="hub-lead" id="heroDesc">Классика, кости, кони, атомные, на троих и своя расстановка. Stockfish или комната по коду.</p>
+      </div>
+      <div class="hub-hero-aside">
+        <div class="hub-board" id="hubBoard" aria-hidden="true"></div>
+      </div>
     </section>
 
-    <div class="hub-tabs" role="tablist" aria-label="Games">
-      <button type="button" class="hub-tab active" role="tab" id="tabChess" data-game="chess" aria-selected="true" aria-controls="panelChess">
-        <span class="hub-tab-icon">♟</span>
-        <span id="tabChessLabel">Шахматы</span>
-      </button>
-      <button type="button" class="hub-tab" role="tab" id="tabCheckers" data-game="checkers" aria-selected="false" aria-controls="panelCheckers">
-        <span class="hub-tab-icon">⬤</span>
-        <span id="tabCheckersLabel">Шашки</span>
-      </button>
-      <button type="button" class="hub-tab" role="tab" id="tabMahjong" data-game="mahjong" aria-selected="false" aria-controls="panelMahjong">
-        <span class="hub-tab-icon">🀄</span>
-        <span id="tabMahjongLabel">Маджонг</span>
-      </button>
-    </div>
-
-    <div class="hub-panels">
-      <section class="hub-panel active" id="panelChess" role="tabpanel" aria-labelledby="tabChess" data-game="chess">
-        <div class="hub-panel-head">
-          <h2 id="panelChessTitle">Шахматы</h2>
-        </div>
-        <div class="mode-cards">
-          <a class="mode-card" href="gamemodes/chess/classic/">
-            <h2>♟ <span id="cardClassicTitle">Классика</span></h2>
-            <p id="cardClassicDesc">Стандартные FIDE-шахматы. Ход за ходом, без ограничений по фигурам.</p>
-            <div class="go" id="cardClassicGo">Открыть →</div>
-          </a>
-          <a class="mode-card" href="gamemodes/chess/custom/">
-            <h2>⚙ <span id="cardChessCustomTitle">Настраиваемый</span></h2>
-            <p id="cardChessCustomDesc">Свободная расстановка фигур перед партией. Stockfish или онлайн-комната.</p>
-            <div class="go" id="cardChessCustomGo">Открыть →</div>
-          </a>
-          <a class="mode-card" href="gamemodes/chess/dice/">
-            <h2>🎲 <span id="cardDiceTitle">Кости</span></h2>
-            <p id="cardDiceDesc">Каждый ход бросаются кости — ходите только выпавшими типами фигур. Можно 1–3 кости.</p>
-            <div class="go" id="cardDiceGo">Открыть →</div>
-          </a>
-          <a class="mode-card" href="gamemodes/chess/knights/">
-            <h2>♞ <span id="cardKnightsTitle">Битва коней</span></h2>
-            <p id="cardKnightsDesc">Короли и пешки как в классике — все остальные фигуры заменены конями. Против Stockfish.</p>
-            <div class="go" id="cardKnightsGo">Открыть →</div>
-          </a>
-          <a class="mode-card" href="gamemodes/chess/atomic/">
-            <h2>☢ <span id="cardAtomicTitle">Атомные</span></h2>
-            <p id="cardAtomicDesc">Взятие вызывает взрыв: фигуры рядом исчезают (пешки не взрываются). Локальный бот.</p>
-            <div class="go" id="cardAtomicGo">Открыть →</div>
-          </a>
-          <a class="mode-card" href="gamemodes/chess/three/">
-            <h2>♟ <span id="cardThreeTitle">На троих</span></h2>
-            <p id="cardThreeDesc">Шестиугольная доска на 96 клеток: белые, красные и чёрные.</p>
-            <div class="go" id="cardThreeGo">Открыть →</div>
-          </a>
-
-        </div>
-      </section>
-
-      <section class="hub-panel" id="panelCheckers" role="tabpanel" aria-labelledby="tabCheckers" data-game="checkers" hidden>
-        <div class="hub-panel-head">
-          <h2 id="panelCheckersTitle">Шашки</h2>
-          <p class="hub-panel-desc" id="panelCheckersDesc">Русские шашки и настраиваемый режим — бот или мультиплеер по коду.</p>
-        </div>
-        <div class="mode-cards">
-          <a class="mode-card" href="gamemodes/checkers/classic/">
-            <h2>⬤ <span id="cardCheckersClassicTitle">Классика</span></h2>
-            <p id="cardCheckersClassicDesc">Русские шашки 8×8: дамка, обязательное взятие, бот или онлайн-комната.</p>
-            <div class="go" id="cardCheckersClassicGo">Открыть →</div>
-          </a>
-          <a class="mode-card" href="gamemodes/checkers/custom/">
-            <h2>⚙ <span id="cardCheckersCustomTitle">Настраиваемый</span></h2>
-            <p id="cardCheckersCustomDesc">Шашки с правилами на выбор: взятие назад, обязательное взятие, таймер хода. Бот или онлайн-комната.</p>
-            <div class="go" id="cardCheckersCustomGo">Открыть →</div>
-          </a>
-        </div>
-      </section>
-
-
-      <section class="hub-panel" id="panelMahjong" role="tabpanel" aria-labelledby="tabMahjong" data-game="mahjong" hidden>
-        <div class="hub-panel-head">
-          <h2 id="panelMahjongTitle">Маджонг</h2>
-          <p class="hub-panel-desc" id="panelMahjongDesc">Режимы маджонга появятся здесь.</p>
-        </div>
-        <div class="mode-cards">
-          <div class="mode-card mode-card--soon" aria-disabled="true">
-            <h2>🀄 <span id="cardMahjongSoonTitle">Скоро</span></h2>
-            <p id="cardMahjongSoonDesc">Режимы маджонга в разработке. Загляните позже.</p>
-            <div class="go go-muted" id="cardMahjongSoonGo">Coming soon</div>
+    <section class="hub-modes" aria-labelledby="modesTitle">
+      <div class="hub-section-head">
+        <h2 id="modesTitle">Режимы</h2>
+        <span class="hub-count" id="modesCount">6 столов</span>
+      </div>
+      <div class="mode-cards">
+        <a class="mode-card mode-card--feature" href="gamemodes/chess/classic/">
+          <div class="mode-card-top">
+            <span class="mode-glyph" aria-hidden="true">♟</span>
+            <span class="mode-tags">
+              <span class="mode-tag" id="tagClassicBot">Бот</span>
+              <span class="mode-tag" id="tagClassicOnline">Онлайн</span>
+            </span>
           </div>
-        </div>
-      </section>
-    </div>
+          <h2 id="cardClassicTitle">Классика</h2>
+          <p id="cardClassicDesc">Стандартные FIDE-шахматы. Ход за ходом, без ограничений по фигурам.</p>
+          <div class="go" id="cardClassicGo">Открыть →</div>
+        </a>
+        <a class="mode-card" href="gamemodes/chess/custom/">
+          <div class="mode-card-top">
+            <span class="mode-glyph" aria-hidden="true">⚙</span>
+            <span class="mode-tags">
+              <span class="mode-tag" id="tagCustomSetup">Расстановка</span>
+              <span class="mode-tag" id="tagCustomOnline">Онлайн</span>
+            </span>
+          </div>
+          <h2 id="cardChessCustomTitle">Настраиваемый</h2>
+          <p id="cardChessCustomDesc">Свободная расстановка фигур перед партией. Stockfish или онлайн-комната.</p>
+          <div class="go" id="cardChessCustomGo">Открыть →</div>
+        </a>
+        <a class="mode-card" href="gamemodes/chess/dice/">
+          <div class="mode-card-top">
+            <span class="mode-glyph" aria-hidden="true">🎲</span>
+            <span class="mode-tags">
+              <span class="mode-tag" id="tagDiceBot">Бот</span>
+              <span class="mode-tag" id="tagDiceOnline">Онлайн</span>
+            </span>
+          </div>
+          <h2 id="cardDiceTitle">Кости</h2>
+          <p id="cardDiceDesc">Каждый ход бросаются кости — ходите только выпавшими типами фигур. Можно 1–3 кости.</p>
+          <div class="go" id="cardDiceGo">Открыть →</div>
+        </a>
+        <a class="mode-card" href="gamemodes/chess/knights/">
+          <div class="mode-card-top">
+            <span class="mode-glyph" aria-hidden="true">♞</span>
+            <span class="mode-tags">
+              <span class="mode-tag" id="tagKnightsBot">Бот</span>
+              <span class="mode-tag" id="tagKnightsOnline">Онлайн</span>
+            </span>
+          </div>
+          <h2 id="cardKnightsTitle">Битва коней</h2>
+          <p id="cardKnightsDesc">Короли и пешки как в классике — все остальные фигуры заменены конями. Против Stockfish.</p>
+          <div class="go" id="cardKnightsGo">Открыть →</div>
+        </a>
+        <a class="mode-card" href="gamemodes/chess/atomic/">
+          <div class="mode-card-top">
+            <span class="mode-glyph" aria-hidden="true">☢</span>
+            <span class="mode-tags">
+              <span class="mode-tag" id="tagAtomicBot">Бот</span>
+              <span class="mode-tag" id="tagAtomicOnline">Онлайн</span>
+            </span>
+          </div>
+          <h2 id="cardAtomicTitle">Атомные</h2>
+          <p id="cardAtomicDesc">Взятие вызывает взрыв: фигуры рядом исчезают (пешки не взрываются). Локальный бот.</p>
+          <div class="go" id="cardAtomicGo">Открыть →</div>
+        </a>
+        <a class="mode-card" href="gamemodes/chess/three/">
+          <div class="mode-card-top">
+            <span class="mode-glyph" aria-hidden="true">⬡</span>
+            <span class="mode-tags">
+              <span class="mode-tag" id="tagThreeBot">Бот</span>
+              <span class="mode-tag" id="tagThreeHotseat">Одно устройство</span>
+            </span>
+          </div>
+          <h2 id="cardThreeTitle">На троих</h2>
+          <p id="cardThreeDesc">Шестиугольная доска на 96 клеток: белые, красные и чёрные.</p>
+          <div class="go" id="cardThreeGo">Открыть →</div>
+        </a>
+      </div>
+    </section>
 
-    <footer class="footer">BoardHack</footer>
+    <footer class="footer hub-footer">BoardHack</footer>
   </main>
 
   <dialog class="settings-dialog" id="settingsDialog" aria-labelledby="settingsTitle">
@@ -146,9 +143,8 @@
   </dialog>
 
   <script src="js/boardhack-config.js?v=20261003cfg"></script>
-  <script src="js/i18n.js?v=20261003a"></script>
+  <script src="js/i18n.js?v=20261004hub"></script>
 <script>
-
     (function () {
       try {
         var u = new URL(window.location.href);
@@ -161,70 +157,87 @@
 
     (function () {
       "use strict";
-      var GAME_KEY = window.BoardHackConfig.storage.hubGame;
-                  var i18nReady = BoardHackI18n.init({ page: "hub", base: "locales" });
+
+      var BACK = "rnbqkbnrpppppppp";
+      var FRONT = "RNBQKBNRPPPPPPPP";
+      var board = document.getElementById("hubBoard");
+      if (board) {
+        var html = "";
+        for (var sq = 0; sq < 64; sq++) {
+          var file = sq % 8;
+          var rank = Math.floor(sq / 8);
+          var light = (file + rank) % 2 === 0;
+          var piece = "";
+          var side = "";
+          if (rank === 0) { piece = BACK.charAt(file); side = "b"; }
+          else if (rank === 1) { piece = BACK.charAt(8 + file); side = "b"; }
+          else if (rank === 6) { piece = FRONT.charAt(8 + file); side = "w"; }
+          else if (rank === 7) { piece = FRONT.charAt(file); side = "w"; }
+          var glyph = piece ? ({
+            K: "\u2654", Q: "\u2655", R: "\u2656", B: "\u2657", N: "\u2658", P: "\u2659",
+            k: "\u265A", q: "\u265B", r: "\u265C", b: "\u265D", n: "\u265E", p: "\u265F"
+          })[piece] || "" : "";
+          html += "<i class=\"" + (light ? "l" : "d") + (side ? " " + side : "") + "\">" + glyph + "</i>";
+        }
+        board.innerHTML = html;
+      }
+
+      var i18nReady = BoardHackI18n.init({ page: "hub", base: "locales" });
       var lang = BoardHackI18n.getLang();
 
       function t(key) {
         return BoardHackI18n.t(key);
       }
 
-var game = "chess";
-      try {
-        var savedGame = localStorage.getItem(GAME_KEY);
-        if (savedGame === "chess" || savedGame === "checkers" || savedGame === "mahjong") game = savedGame;
-      } catch (e) {}
+      function setText(id, key) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = t(key);
+      }
 
       function applyLang() {
         document.documentElement.lang = lang;
         document.title = t("docTitle");
         document.getElementById("heroTitle").innerHTML = t("heroTitleHtml");
-        document.getElementById("heroDesc").textContent = t("heroDesc");
-        document.getElementById("tabChessLabel").textContent = t("tabChess");
-        document.getElementById("tabCheckersLabel").textContent = t("tabCheckers");
-        document.getElementById("tabMahjongLabel").textContent = t("tabMahjong");
-        document.getElementById("panelChessTitle").textContent = t("panelChessTitle");
-        document.getElementById("panelCheckersTitle").textContent = t("panelCheckersTitle");
-        document.getElementById("panelCheckersDesc").textContent = t("panelCheckersDesc");
-        document.getElementById("panelMahjongTitle").textContent = t("panelMahjongTitle");
-        document.getElementById("panelMahjongDesc").textContent = t("panelMahjongDesc");
-        document.getElementById("cardClassicTitle").textContent = t("cardClassicTitle");
-        document.getElementById("cardClassicDesc").textContent = t("cardClassicDesc");
-        document.getElementById("cardClassicGo").textContent = t("cardClassicGo");
-        document.getElementById("cardDiceTitle").textContent = t("cardDiceTitle");
-        document.getElementById("cardDiceDesc").textContent = t("cardDiceDesc");
-        document.getElementById("cardDiceGo").textContent = t("cardDiceGo");
-        document.getElementById("cardChessCustomTitle").textContent = t("cardChessCustomTitle");
-        document.getElementById("cardChessCustomDesc").textContent = t("cardChessCustomDesc");
-        document.getElementById("cardChessCustomGo").textContent = t("cardChessCustomGo");
-        document.getElementById("cardKnightsTitle").textContent = t("cardKnightsTitle");
-        document.getElementById("cardKnightsDesc").textContent = t("cardKnightsDesc");
-        document.getElementById("cardKnightsGo").textContent = t("cardKnightsGo");
-        document.getElementById("cardAtomicTitle").textContent = t("cardAtomicTitle");
-        document.getElementById("cardAtomicDesc").textContent = t("cardAtomicDesc");
-        document.getElementById("cardAtomicGo").textContent = t("cardAtomicGo");
-        document.getElementById("cardThreeTitle").textContent = t("cardThreeTitle");
-        document.getElementById("cardThreeDesc").textContent = t("cardThreeDesc");
-        document.getElementById("cardThreeGo").textContent = t("cardThreeGo");
-        document.getElementById("cardCheckersClassicTitle").textContent = t("cardCheckersClassicTitle");
-        document.getElementById("cardCheckersClassicDesc").textContent = t("cardCheckersClassicDesc");
-        document.getElementById("cardCheckersClassicGo").textContent = t("cardCheckersClassicGo");
-        document.getElementById("cardCheckersCustomTitle").textContent = t("cardCheckersCustomTitle");
-        document.getElementById("cardCheckersCustomDesc").textContent = t("cardCheckersCustomDesc");
-        document.getElementById("cardCheckersCustomGo").textContent = t("cardCheckersCustomGo");
-        document.getElementById("cardMahjongSoonTitle").textContent = t("cardMahjongSoonTitle");
-        document.getElementById("cardMahjongSoonDesc").textContent = t("cardMahjongSoonDesc");
-        document.getElementById("cardMahjongSoonGo").textContent = t("cardMahjongSoonGo");
-        var _sll = document.getElementById("settingsLangLabel");
-        if (_sll) _sll.textContent = t("settingsLangLabel");
-        var _st = document.getElementById("settingsTitle");
-        if (_st) _st.textContent = t("settingsTitle");
-        var _sc = document.getElementById("settingsCloseBtn");
-        if (_sc) _sc.setAttribute("aria-label", t("settingsTitle"));
-        var _smb = document.getElementById("settingsMenuBtn");
-        if (_smb) {
-          _smb.setAttribute("aria-label", t("settingsTitle"));
-          _smb.setAttribute("title", t("settingsTitle"));
+        setText("heroKicker", "heroKicker");
+        setText("heroDesc", "heroDesc");
+        setText("modesTitle", "modesTitle");
+        setText("modesCount", "modesCount");
+        setText("cardClassicTitle", "cardClassicTitle");
+        setText("cardClassicDesc", "cardClassicDesc");
+        setText("cardClassicGo", "cardClassicGo");
+        setText("cardDiceTitle", "cardDiceTitle");
+        setText("cardDiceDesc", "cardDiceDesc");
+        setText("cardDiceGo", "cardDiceGo");
+        setText("cardChessCustomTitle", "cardChessCustomTitle");
+        setText("cardChessCustomDesc", "cardChessCustomDesc");
+        setText("cardChessCustomGo", "cardChessCustomGo");
+        setText("cardKnightsTitle", "cardKnightsTitle");
+        setText("cardKnightsDesc", "cardKnightsDesc");
+        setText("cardKnightsGo", "cardKnightsGo");
+        setText("cardAtomicTitle", "cardAtomicTitle");
+        setText("cardAtomicDesc", "cardAtomicDesc");
+        setText("cardAtomicGo", "cardAtomicGo");
+        setText("cardThreeTitle", "cardThreeTitle");
+        setText("cardThreeDesc", "cardThreeDesc");
+        setText("cardThreeGo", "cardThreeGo");
+        ["tagClassicBot", "tagDiceBot", "tagKnightsBot", "tagAtomicBot", "tagThreeBot"].forEach(function (id) {
+          setText(id, "tagBot");
+        });
+        ["tagClassicOnline", "tagCustomOnline", "tagDiceOnline", "tagKnightsOnline", "tagAtomicOnline"].forEach(function (id) {
+          setText(id, "tagOnline");
+        });
+        setText("tagCustomSetup", "tagSetup");
+        setText("tagThreeHotseat", "tagHotseat");
+        var settingsLang = document.getElementById("settingsLangLabel");
+        if (settingsLang) settingsLang.textContent = t("settingsLangLabel");
+        var settingsTitle = document.getElementById("settingsTitle");
+        if (settingsTitle) settingsTitle.textContent = t("settingsTitle");
+        var settingsClose = document.getElementById("settingsCloseBtn");
+        if (settingsClose) settingsClose.setAttribute("aria-label", t("settingsTitle"));
+        var settingsBtn = document.getElementById("settingsMenuBtn");
+        if (settingsBtn) {
+          settingsBtn.setAttribute("aria-label", t("settingsTitle"));
+          settingsBtn.setAttribute("title", t("settingsTitle"));
         }
         document.getElementById("langRu").classList.toggle("active", lang === "ru");
         document.getElementById("langEn").classList.toggle("active", lang === "en");
@@ -235,25 +248,6 @@ var game = "chess";
           lang = BoardHackI18n.getLang();
           applyLang();
         });
-      }
-
-      function setGame(next) {
-        if (next !== "chess" && next !== "checkers" && next !== "mahjong") return;
-        game = next;
-        try { localStorage.setItem(GAME_KEY, game); } catch (e) {}
-        var tabs = document.querySelectorAll(".hub-tab");
-        var panels = document.querySelectorAll(".hub-panel");
-        for (var i = 0; i < tabs.length; i++) {
-          var on = tabs[i].getAttribute("data-game") === game;
-          tabs[i].classList.toggle("active", on);
-          tabs[i].setAttribute("aria-selected", on ? "true" : "false");
-        }
-        for (var j = 0; j < panels.length; j++) {
-          var show = panels[j].getAttribute("data-game") === game;
-          panels[j].classList.toggle("active", show);
-          if (show) panels[j].removeAttribute("hidden");
-          else panels[j].setAttribute("hidden", "");
-        }
       }
 
       function wireSettingsMenu() {
@@ -278,18 +272,9 @@ var game = "chess";
       document.getElementById("langRu").addEventListener("click", function () { setLang("ru"); });
       document.getElementById("langEn").addEventListener("click", function () { setLang("en"); });
 
-      var tabEls = document.querySelectorAll(".hub-tab");
-      for (var k = 0; k < tabEls.length; k++) {
-        tabEls[k].addEventListener("click", function (e) {
-          var g = e.currentTarget.getAttribute("data-game");
-          setGame(g);
-        });
-      }
-
       i18nReady.then(function () {
         lang = BoardHackI18n.getLang();
         applyLang();
-        setGame(game);
       });
     })();
   </script>

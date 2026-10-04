@@ -886,107 +886,232 @@ button.btn:disabled {
 
 
 
-/* Hub tabs (multi-game shell) */
-.hub-main .hero { margin-bottom: 1.75rem; }
-
-.hub-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0;
-  margin-bottom: 1.25rem;
+/* Hub — chess-only landing */
+.hub-main {
+  max-width: 1080px;
 }
 
-.hub-tab {
-  appearance: none;
-  border: 1px solid transparent;
-  border-bottom: none;
-  background: transparent;
-  color: var(--text-muted);
-  font-family: var(--font);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  padding: 0.7rem 1.05rem;
-  border-radius: var(--radius) var(--radius) 0 0;
-  cursor: pointer;
-  display: inline-flex;
+.hub-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
   align-items: center;
-  gap: 0.45rem;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(159, 239, 0, 0.1), transparent 55%),
+    linear-gradient(160deg, #161b14 0%, var(--card) 55%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.45rem 1.3rem 1.35rem;
+  margin-bottom: 1.6rem;
   position: relative;
-  bottom: -1px;
-  transition: color 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+  overflow: hidden;
 }
 
-.hub-tab:hover {
-  color: var(--text);
-  background: var(--accent-dim);
-}
-
-.hub-tab.active {
-  color: var(--accent);
-  background: var(--card);
-  border-color: var(--border);
-  border-bottom-color: var(--card);
-  box-shadow: 0 0 0 1px transparent;
-}
-
-.hub-tab.active::after {
+.hub-hero::before {
   content: "";
   position: absolute;
-  left: 0.85rem;
-  right: 0.85rem;
-  bottom: 0;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px 2px 0 0;
-}
-
-.hub-tab-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.hub-panel-head {
-  margin-bottom: 0.35rem;
-}
-
-.hub-panel-head h2 {
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
-}
-
-.hub-panel-desc {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-.hub-panel[hidden] { display: none !important; }
-.hub-panel.active { display: block; }
-
-.mode-card--soon {
-  opacity: 0.72;
-  cursor: default;
-  border-style: dashed;
+  inset: 0;
+  background-image: linear-gradient(rgba(159, 239, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 239, 0, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(90deg, transparent, #000 70%);
   pointer-events: none;
 }
 
-.mode-card--soon:hover {
-  border-color: var(--border);
-  box-shadow: none;
-  transform: none;
+.hub-hero-copy,
+.hub-hero-aside {
+  position: relative;
+  z-index: 1;
 }
 
-.mode-card .go-muted,
-.go-muted {
-  color: var(--text-muted) !important;
+.hub-kicker {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.55rem;
 }
 
-@media (max-width: 560px) {
-  .hub-tab { flex: 1 1 auto; justify-content: center; padding: 0.65rem 0.7rem; font-size: 0.85rem; }
+.hub-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.45rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  margin-bottom: 0.65rem;
+}
+
+.hub-hero h1 .accent { color: var(--accent); }
+
+.hub-lead {
+  color: var(--text-muted);
+  max-width: 38rem;
+  font-size: 0.98rem;
+}
+
+.hub-hero-aside {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hub-board {
+  width: min(100%, 232px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(159, 239, 0, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(11, 14, 17, 0.55);
+}
+
+.hub-board i {
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: clamp(0.72rem, 2.1vw, 1.15rem);
+  line-height: 1;
+  user-select: none;
+}
+
+.hub-board i.l { background: #c5d7a4; }
+.hub-board i.d { background: #2c5530; }
+.hub-board i.w {
+  color: #f7fff2;
+  text-shadow: 0 0 1px #10210e, 0 1px 0 #10210e;
+}
+.hub-board i.b {
+  color: #10180e;
+  text-shadow: 0 0 1px #e7f6d4;
+}
+
+.hub-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.hub-section-head h2 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hub-count {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hub-main .mode-cards {
+  margin-top: 0;
+  gap: 0.85rem;
+}
+
+.hub-main .mode-card {
+  padding: 1.15rem 1.15rem 1.05rem;
+  min-height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%),
+    var(--card);
+}
+
+.mode-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.mode-glyph {
+  width: 2.45rem;
+  height: 2.45rem;
+  flex: 0 0 auto;
+  border-radius: 9px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(159, 239, 0, 0.28);
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.mode-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.mode-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: rgba(11, 14, 17, 0.35);
+  border-radius: 999px;
+  padding: 0.16rem 0.45rem;
+}
+
+.hub-main .mode-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+}
+
+.hub-main .mode-card p {
+  min-height: 2.7em;
+}
+
+.mode-card--feature {
+  background:
+    radial-gradient(ellipse 80% 120% at 0% 0%, rgba(159, 239, 0, 0.14), transparent 50%),
+    var(--card);
+}
+
+.mode-card--feature .mode-glyph {
+  width: 2.7rem;
+  height: 2.7rem;
+  font-size: 1.35rem;
+  background: var(--accent);
+  color: #0b0e11;
+  border-color: var(--accent);
+}
+
+@media (min-width: 700px) {
+  .hub-hero {
+    grid-template-columns: minmax(0, 1.35fr) auto;
+    padding: 1.7rem 1.6rem;
+  }
+
+  .hub-main .mode-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mode-card--feature {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1040px) {
+  .hub-main .mode-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.hub-footer {
+  margin-top: 2.25rem;
 }
 
 /* —— Multiplayer —— */
