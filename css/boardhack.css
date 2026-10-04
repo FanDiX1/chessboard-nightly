@@ -223,9 +223,9 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(11, 14, 17, 0.45);
 }
 
-/* a1 dark; same green board as the hub */
-.white-1e1d7 { background-color: #c5d7a4 !important; }
-.black-3c85d { background-color: #2c5530 !important; }
+/* a1 dark; classic cream / brown wood */
+.white-1e1d7 { background-color: #f0d9b5 !important; }
+.black-3c85d { background-color: #b58863 !important; }
 
 /* Ensure black pieces stay visible on dark squares (alpha already outlined) */
 #board img.piece-417db {
@@ -1000,8 +1000,8 @@ button.btn:disabled {
   user-select: none;
 }
 
-.hub-board i.l { background: #c5d7a4; }
-.hub-board i.d { background: #2c5530; }
+.hub-board i.l { background: #f0d9b5; }
+.hub-board i.d { background: #b58863; }
 .hub-board img {
   width: 92%;
   height: 92%;
