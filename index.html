@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/boardhack.css?v=20261004play" />
+  <link rel="stylesheet" href="css/boardhack.css?v=20261004mix" />
 </head>
 <body>
   <header class="topbar">
@@ -44,7 +44,7 @@
     <section class="hub-modes" aria-labelledby="modesTitle">
       <div class="hub-section-head">
         <h2 id="modesTitle">Режимы</h2>
-        <span class="hub-count" id="modesCount">6 столов</span>
+        <span class="hub-count" id="modesCount">5 столов</span>
       </div>
       <div class="mode-cards">
         <a class="mode-card mode-card--feature" href="gamemodes/chess/classic/">
@@ -53,23 +53,12 @@
             <span class="mode-tags">
               <span class="mode-tag" id="tagClassicBot">Бот</span>
               <span class="mode-tag" id="tagClassicOnline">Онлайн</span>
+              <span class="mode-tag" id="tagClassicSetup">Расстановка</span>
             </span>
           </div>
           <h2 id="cardClassicTitle">Классика</h2>
-          <p id="cardClassicDesc">Стандартные FIDE-шахматы. Ход за ходом, без ограничений по фигурам.</p>
+          <p id="cardClassicDesc">Стандартные FIDE-шахматы против Stockfish или в онлайн-комнате. Свою расстановку можно включить в партии.</p>
           <div class="go" id="cardClassicGo">Открыть →</div>
-        </a>
-        <a class="mode-card" href="gamemodes/chess/custom/">
-          <div class="mode-card-top">
-            <span class="mode-glyph" aria-hidden="true">⚙</span>
-            <span class="mode-tags">
-              <span class="mode-tag" id="tagCustomSetup">Расстановка</span>
-              <span class="mode-tag" id="tagCustomOnline">Онлайн</span>
-            </span>
-          </div>
-          <h2 id="cardChessCustomTitle">Настраиваемый</h2>
-          <p id="cardChessCustomDesc">Свободная расстановка фигур перед партией. Stockfish или онлайн-комната.</p>
-          <div class="go" id="cardChessCustomGo">Открыть →</div>
         </a>
         <a class="mode-card" href="gamemodes/chess/dice/">
           <div class="mode-card-top">
@@ -112,11 +101,11 @@
             <span class="mode-glyph" aria-hidden="true">⬡</span>
             <span class="mode-tags">
               <span class="mode-tag" id="tagThreeBot">Бот</span>
-              <span class="mode-tag" id="tagThreeHotseat">Одно устройство</span>
+              <span class="mode-tag" id="tagThreeOnline">Онлайн</span>
             </span>
           </div>
           <h2 id="cardThreeTitle">На троих</h2>
-          <p id="cardThreeDesc">Шестиугольная доска на 96 клеток: белые, красные и чёрные.</p>
+          <p id="cardThreeDesc">Шестиугольная доска на 96 клеток. Локально — один цвет против двух ботов, втроём — онлайн.</p>
           <div class="go" id="cardThreeGo">Открыть →</div>
         </a>
       </div>
@@ -143,7 +132,7 @@
   </dialog>
 
   <script src="js/boardhack-config.js?v=20261003cfg"></script>
-  <script src="js/i18n.js?v=20261004hub"></script>
+  <script src="js/i18n.js?v=20261004mix"></script>
 <script>
     (function () {
       try {
@@ -212,9 +201,6 @@
         setText("cardDiceTitle", "cardDiceTitle");
         setText("cardDiceDesc", "cardDiceDesc");
         setText("cardDiceGo", "cardDiceGo");
-        setText("cardChessCustomTitle", "cardChessCustomTitle");
-        setText("cardChessCustomDesc", "cardChessCustomDesc");
-        setText("cardChessCustomGo", "cardChessCustomGo");
         setText("cardKnightsTitle", "cardKnightsTitle");
         setText("cardKnightsDesc", "cardKnightsDesc");
         setText("cardKnightsGo", "cardKnightsGo");
@@ -227,11 +213,10 @@
         ["tagClassicBot", "tagDiceBot", "tagKnightsBot", "tagAtomicBot", "tagThreeBot"].forEach(function (id) {
           setText(id, "tagBot");
         });
-        ["tagClassicOnline", "tagCustomOnline", "tagDiceOnline", "tagKnightsOnline", "tagAtomicOnline"].forEach(function (id) {
+        ["tagClassicOnline", "tagDiceOnline", "tagKnightsOnline", "tagAtomicOnline", "tagThreeOnline"].forEach(function (id) {
           setText(id, "tagOnline");
         });
-        setText("tagCustomSetup", "tagSetup");
-        setText("tagThreeHotseat", "tagHotseat");
+        setText("tagClassicSetup", "tagSetup");
         var settingsLang = document.getElementById("settingsLangLabel");
         if (settingsLang) settingsLang.textContent = t("settingsLangLabel");
         var settingsTitle = document.getElementById("settingsTitle");

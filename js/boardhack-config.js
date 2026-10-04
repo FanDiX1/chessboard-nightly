@@ -36,6 +36,7 @@
       mode: "boardhack-mode",
       diceCount: "boardhack-dice-count",
       hubGame: "boardhack-hub-game",
+      freeSetup: "boardhack-classic-free-setup",
       rooms: {
         classic: "boardhack-mp-room",
         custom: "boardhack-mp-room",

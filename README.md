@@ -41,11 +41,11 @@ Default: `http://localhost:3001` — see `server/README.md`.
 ## Layout
 
 ```
-index.html                 # multi-game hub
+index.html                 # chess hub
 css/                       # BoardHack styles
-gamemodes/chess/classic/   # classic chess
+gamemodes/chess/classic/   # classic chess, optional free setup
 gamemodes/chess/dice/      # dice chess
-gamemodes/chess/custom/    # free-setup customizable chess
+gamemodes/chess/custom/    # redirects to classic
 gamemodes/chess/knights/   # knights battle (bot + MP)
 gamemodes/chess/atomic/    # atomic chess (bot + MP)
 gamemodes/checkers/classic/# Russian draughts

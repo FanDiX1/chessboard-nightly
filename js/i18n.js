@@ -9,7 +9,7 @@
   "use strict";
 
   var LANG_KEY = global.BoardHackConfig.storage.lang;
-  var VERSION = "20261004hub";
+  var VERSION = "20261004mix";
   var SUPPORTED = { ru: true, en: true };
 
   var lang = readSavedLang();
