@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/boardhack.css?v=20261004hub" />
+  <link rel="stylesheet" href="css/boardhack.css?v=20261004play" />
 </head>
 <body>
   <header class="topbar">
@@ -158,26 +158,30 @@
     (function () {
       "use strict";
 
-      var BACK = "rnbqkbnrpppppppp";
-      var FRONT = "RNBQKBNRPPPPPPPP";
+      var RANKS = [
+        ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
+        ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
+        ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
+      ];
       var board = document.getElementById("hubBoard");
       if (board) {
+        var theme = (window.BoardHackConfig && BoardHackConfig.pieceTheme) ||
+          "https://cdn.jsdelivr.net/gh/oakmac/chessboardjs@master/website/img/chesspieces/wikipedia/{piece}.png";
         var html = "";
-        for (var sq = 0; sq < 64; sq++) {
-          var file = sq % 8;
-          var rank = Math.floor(sq / 8);
-          var light = (file + rank) % 2 === 0;
-          var piece = "";
-          var side = "";
-          if (rank === 0) { piece = BACK.charAt(file); side = "b"; }
-          else if (rank === 1) { piece = BACK.charAt(8 + file); side = "b"; }
-          else if (rank === 6) { piece = FRONT.charAt(8 + file); side = "w"; }
-          else if (rank === 7) { piece = FRONT.charAt(file); side = "w"; }
-          var glyph = piece ? ({
-            K: "\u2654", Q: "\u2655", R: "\u2656", B: "\u2657", N: "\u2658", P: "\u2659",
-            k: "\u265A", q: "\u265B", r: "\u265C", b: "\u265D", n: "\u265E", p: "\u265F"
-          })[piece] || "" : "";
-          html += "<i class=\"" + (light ? "l" : "d") + (side ? " " + side : "") + "\">" + glyph + "</i>";
+        for (var rank = 0; rank < 8; rank++) {
+          for (var file = 0; file < 8; file++) {
+            var light = (file + rank) % 2 === 0;
+            var code = RANKS[rank][file];
+            var img = code
+              ? "<img src=\"" + theme.replace("{piece}", code) + "\" alt=\"\" draggable=\"false\" />"
+              : "";
+            html += "<i class=\"" + (light ? "l" : "d") + "\">" + img + "</i>";
+          }
         }
         board.innerHTML = html;
       }

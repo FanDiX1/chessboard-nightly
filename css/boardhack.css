@@ -13,7 +13,7 @@
   --danger: #ff3e3e;
   --warn: #ffbf00;
   --info: #4dabf7;
-  --radius: 10px;
+  --radius: 14px;
   --font: "Ubuntu", system-ui, -apple-system, sans-serif;
   --mono: "Ubuntu Mono", ui-monospace, monospace;
 }
@@ -155,19 +155,42 @@ a:hover { text-decoration: underline; }
 }
 
 .card {
-  background: var(--card);
+  background:
+    linear-gradient(180deg, rgba(159, 239, 0, 0.045), transparent 46%),
+    var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.1rem;
+  padding: 1.15rem 1.15rem 1.1rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+
+.layout > .card:first-child {
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(159, 239, 0, 0.1), transparent 52%),
+    linear-gradient(165deg, #161b14 0%, var(--card) 46%);
+  border-color: rgba(159, 239, 0, 0.2);
 }
 
 .card-title {
-  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--text-muted);
-  font-weight: 500;
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.card-title::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  flex: 0 0 auto;
 }
 
 .board-wrap {
@@ -194,15 +217,15 @@ a:hover { text-decoration: underline; }
 }
 
 .board-b72b1 {
-  border: 2px solid var(--border) !important;
-  border-radius: 8px;
+  border: 1px solid rgba(159, 239, 0, 0.32) !important;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 0 1px var(--border-soft), 0 12px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(11, 14, 17, 0.45);
 }
 
-/* a1 dark; standard FIDE colors */
-.white-1e1d7 { background-color: #c8cdd5 !important; }
-.black-3c85d { background-color: #4a5564 !important; }
+/* a1 dark; same green board as the hub */
+.white-1e1d7 { background-color: #c5d7a4 !important; }
+.black-3c85d { background-color: #2c5530 !important; }
 
 /* Ensure black pieces stay visible on dark squares (alpha already outlined) */
 #board img.piece-417db {
@@ -218,10 +241,10 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  padding: 0.65rem 0.85rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  background: rgba(11, 14, 17, 0.55);
+  border: 1px solid rgba(159, 239, 0, 0.22);
+  border-radius: 10px;
   font-family: var(--mono);
   font-size: 0.85rem;
 }
@@ -314,8 +337,9 @@ button.btn-ghost {
 }
 
 button.btn-ghost:hover {
-  background: var(--card-hover);
-  border-color: #3a424c;
+  background: var(--accent-dim);
+  border-color: rgba(159, 239, 0, 0.45);
+  color: var(--accent);
 }
 
 button.btn:disabled {
@@ -336,9 +360,9 @@ button.btn:disabled {
   overflow-y: auto;
   font-family: var(--mono);
   font-size: 0.8rem;
-  background: var(--bg-elevated);
+  background: rgba(11, 14, 17, 0.4);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 0.5rem;
 }
 
@@ -375,10 +399,10 @@ button.btn:disabled {
 }
 
 .meta-item {
-  background: var(--bg-elevated);
+  background: rgba(11, 14, 17, 0.4);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
 }
 
 .meta-item .k {
@@ -978,13 +1002,12 @@ button.btn:disabled {
 
 .hub-board i.l { background: #c5d7a4; }
 .hub-board i.d { background: #2c5530; }
-.hub-board i.w {
-  color: #f7fff2;
-  text-shadow: 0 0 1px #10210e, 0 1px 0 #10210e;
-}
-.hub-board i.b {
-  color: #10180e;
-  text-shadow: 0 0 1px #e7f6d4;
+.hub-board img {
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
 }
 
 .hub-section-head {
@@ -1318,6 +1341,11 @@ button.btn:disabled {
 .settings-dialog::backdrop {
   background: rgba(0, 0, 0, 0.68);
   backdrop-filter: blur(3px);
+}
+
+.settings-dialog-head .card-title,
+.rules-dialog-head .card-title {
+  margin-bottom: 0;
 }
 
 .rules-dialog-head,
